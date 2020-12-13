@@ -24,3 +24,20 @@ class Solution:
 
     def evaluate_solution(self):
         pass
+    
+
+def solve_bin_pack(b, i):
+    pass
+
+
+if __name__ == '__main__':
+
+    # Create list [2, 4, 6, ..., 1000]
+    i1 = list(map(lambda x: 2*x, list(range(1, 501))))
+    
+    # Create list [2, 8, 18, 32, ..., 500000]
+    i2 = list(map(lambda x: 2*x**2 , list(range(1, 501))))
+
+    solve_bin_pack(b=10, i=i1)
+    # solve_bin_pack(b=100, i=i2)
+
