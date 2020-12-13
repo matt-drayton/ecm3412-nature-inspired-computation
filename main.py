@@ -18,7 +18,7 @@ class Solution:
 
 
     def __repr__(self):
-        return f"Solution(fitness={self.evaluate_solution()})"
+        return f"Solution(fitness={self.fitness})"
 
 
     def generate_chromosome(self):
@@ -41,12 +41,13 @@ class Solution:
                 bins[gene] = 0
             bins[gene] += self.items[i]
 
-        return max(bins.values()) - min(bins.values())
-    
+        self.fitness = max(bins.values()) - min(bins.values())
+
+        return self.fitness
 
 def binary_tournament(population):
     candidates = random.choices(population, k=2)
-    return min(candidates, key=lambda candidate: candidate.evaluate_solution())
+    return min(candidates, key=lambda candidate: candidate.fitness)
 
 
 def select_parents(population):
@@ -75,7 +76,7 @@ def solve_bin_pack(b, i, m, p):
     iter_count = 0
     # Generate initial population
     population = [Solution(b, i) for x in range(p)]
-    starting_avg = sum(sol.evaluate_solution() for sol in population) / p
+    starting_avg = sum(sol.fitness for sol in population) / p
     print("Starting Average: ", starting_avg)
     flag_stop = False
 
@@ -94,17 +95,16 @@ def solve_bin_pack(b, i, m, p):
         population = weakest_replacement(population, child1)
         population = weakest_replacement(population, child2)
 
-    ending_average = sum(sol.evaluate_solution() for sol in population) / p
+    ending_average = sum(sol.fitness for sol in population) / p
     print("Ending Average: ", ending_average)
     print(iter_count)
 
 
 def weakest_replacement(population, new_solution):
-    new_solution_score = new_solution.evaluate_solution()
 
-    worst_solution = max(population, key=lambda solution: solution.evaluate_solution())
+    worst_solution = max(population, key=lambda solution: solution.fitness)
 
-    if new_solution_score < worst_solution.evaluate_solution():
+    if new_solution.fitness < worst_solution.fitness:
         population.remove(worst_solution)
         population.append(new_solution)
     return population
@@ -118,7 +118,7 @@ if __name__ == '__main__':
     # Create list [2, 8, 18, 32, ..., 500000]
     i2 = list(map(lambda x: 2*x**2 , list(range(1, 501))))
 
-    solve_bin_pack(b=10, i=i1, m=1, p=10)
+    solve_bin_pack(b=10, i=i1, m=1, p=100)
 
     # solve_bin_pack(b=100, i=i2)
 
