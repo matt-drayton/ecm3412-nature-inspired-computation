@@ -1,7 +1,7 @@
 from evolution import evolve_bin_packing_solution
 
 
-def run_binpacking_experiment(b1, i1, b2, i2, m, p, n_experiments=5, crossover=True):
+def run_binpacking_experiment(b1, i1, b2, i2, m, p, n_experiments=5, crossover=True, n_iterations=10000):
     """Run the evolutionary algorithm a number of times, return the best results.
     
     Args:
@@ -25,8 +25,8 @@ def run_binpacking_experiment(b1, i1, b2, i2, m, p, n_experiments=5, crossover=T
     bpp2results = []
 
     for i in range(n_experiments):
-        bpp1results.append(evolve_bin_packing_solution(b1, i1, m, p, crossover))
-        bpp2results.append(evolve_bin_packing_solution(b2, i2, m, p, crossover))
+        bpp1results.append(evolve_bin_packing_solution(b1, i1, m, p, crossover, n_iterations=n_iterations))
+        bpp2results.append(evolve_bin_packing_solution(b2, i2, m, p, crossover, n_iterations=n_iterations))
 
     return bpp1results, bpp2results
 
@@ -39,28 +39,31 @@ if __name__ == '__main__':
     # Create list [2, 8, 18, 32, ..., 500000]
     i2 = list(map(lambda x: 2*x**2 , list(range(1, 501))))
 
-    experiments = []
-
+    # experiments = []
+    print(run_binpacking_experiment(100, i1, 10, i2, m=1, p=10))
+    # print(run_binpacking_experiment(100, i1, 10, i2, m=5, p=10))
     # Experiment 1: Crossover, M=1, p=10
-    print("Starting experiment 1:")
-    experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=1, p=10))
+    # print("Starting experiment 1:")
+    # experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=1, p=10))
 
-    # Experiment 2: Crossover, M=1, p=100
-    print("Starting experiment 2:")
-    experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=1, p=100))
+    # # Experiment 2: Crossover, M=1, p=100
+    # print("Starting experiment 2:")
+    # experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=1, p=100))
 
-    # Experiment 3: Crossover, M=5, p=10
-    print("Starting experiment 3:")
-    experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=5, p=10))
+    # # Experiment 3: Crossover, M=5, p=10
+    # print("Starting experiment 3:")
+    # experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=5, p=10))
 
-    # Experiment 4: Crossover, M=5, p=100
-    print("Starting experiment 4:")
-    experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=5, p=100))
+    # # Experiment 4: Crossover, M=5, p=100
+    # print("Starting experiment 4:")
+    # experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=5, p=100))
 
-    # Experiment 5: No Crossover, M=5, p=10
-    print("Starting experiment 5:")
-    experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=5, p=10, crossover=False))
+    # # Experiment 5: No Crossover, M=5, p=10
+    # print("Starting experiment 5:")
+    # experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=5, p=10, crossover=False))
 
-    # Experiment 6: Crossover, M=0 (No mutation), p=10
-    print("Starting experiment 6:")
-    experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=0, p=10))
+    # # Experiment 6: Crossover, M=0 (No mutation), p=10
+    # print("Starting experiment 6:")
+    # experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=0, p=10))
+
+
