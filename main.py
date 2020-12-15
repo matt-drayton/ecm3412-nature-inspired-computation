@@ -39,31 +39,29 @@ if __name__ == '__main__':
     # Create list [2, 8, 18, 32, ..., 500000]
     i2 = list(map(lambda x: 2*x**2 , list(range(1, 501))))
 
-    # experiments = []
-    print(run_binpacking_experiment(100, i1, 10, i2, m=1, p=10))
-    # print(run_binpacking_experiment(100, i1, 10, i2, m=5, p=10))
+    experiments = []
     # Experiment 1: Crossover, M=1, p=10
-    # print("Starting experiment 1:")
-    # experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=1, p=10))
+    print("Starting experiment 1:")
+    experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=1, p=10))
 
-    # # Experiment 2: Crossover, M=1, p=100
-    # print("Starting experiment 2:")
-    # experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=1, p=100))
+    # Experiment 2: Crossover, M=1, p=100
+    print("Starting experiment 2:")
+    experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=1, p=100))
 
-    # # Experiment 3: Crossover, M=5, p=10
-    # print("Starting experiment 3:")
-    # experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=5, p=10))
+    # Experiment 3: Crossover, M=5, p=10
+    print("Starting experiment 3:")
+    experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=5, p=10))
 
-    # # Experiment 4: Crossover, M=5, p=100
-    # print("Starting experiment 4:")
-    # experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=5, p=100))
+    # Experiment 4: Crossover, M=5, p=100
+    print("Starting experiment 4:")
+    experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=5, p=100))
 
-    # # Experiment 5: No Crossover, M=5, p=10
-    # print("Starting experiment 5:")
-    # experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=5, p=10, crossover=False))
+    # Experiment 5: No Crossover, M=5, p=10
+    print("Starting experiment 5:")
+    experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=5, p=10, crossover=False))
 
-    # # Experiment 6: Crossover, M=0 (No mutation), p=10
-    # print("Starting experiment 6:")
-    # experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=0, p=10))
+    # Experiment 6: Crossover, M=0 (No mutation), p=10
+    print("Starting experiment 6:")
+    experiments.append(run_binpacking_experiment(10, i1, 100, i2, m=0, p=10))
 
 
