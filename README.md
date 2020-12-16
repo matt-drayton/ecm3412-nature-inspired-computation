@@ -1,5 +1,5 @@
 # ECM3412 Nature Inspired Computing - Evolutionary Algorithms
-This is an implementation of a static-state Evolutionary Algorithm using binary tournaments, weakest replacement, M-gene mutation and single-point crossover to solve the Binpacking Problem. 
+This is an implementation of a steady-state Evolutionary Algorithm using binary tournaments, weakest replacement, M-gene mutation and single-point crossover to solve the Binpacking Problem. 
 
 ## Getting Started
 To begin with, it is recommended that you create a virtual Python environment. This is done by entering the command `python -m venv .venv`. 
